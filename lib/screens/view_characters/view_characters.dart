@@ -30,37 +30,15 @@ class _ViewCharactersState extends State<ViewCharacters> {
                       Keys.navKey.currentState.pushNamed(Routes.selectWorld)),
               body: SafeArea(
                 child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Center(child: Text(widget.toString()))
-                    // padding: const EdgeInsets.symmetric(horizontal: 10),
-                    // child: Column(
-                    //   mainAxisSize: MainAxisSize.max,
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: <Widget>[
-                    //     // Row(
-                    //     //   children: <Widget>[
-                    //     //     SizedBox(
-                    //     //       height: 20,
-                    //     //       child: Image.asset('assets/images/title.png'),
-                    //     //     ),
-                    //     //   ],
-                    //     // ),
-                    //     // Expanded(
-                    //     //     child: model.characters != null
-                    //     //         ? ListView.builder(
-                    //     //             itemCount: model.characters.length,
-                    //     //             itemBuilder: (context, index) => GestureDetector(
-                    //     //               onTap: () => model.editCharacter(index),
-                    //     //               child: CharacterItem(
-                    //     //                 character: model.characters[index],
-                    //     //                 onDeleteItem: () => model.deleteCharacter(index),
-                    //     //               ),
-                    //     //             ),
-                    //     //           )
-                    //     //         : Center())
-                    //   ],
-                    // ),
+                  padding: EdgeInsets.all(8),
+                  child: Center(
+                    child: RaisedButton(
+                      onPressed: () => Keys.navKey.currentState
+                          .pushNamed(Routes.viewCharacter),
+                      child: Text('ViewCharacter'),
                     ),
+                  ),
+                ),
               ),
             ));
   }

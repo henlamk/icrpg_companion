@@ -12,6 +12,7 @@ import 'screens/select_folk/select_folk.dart';
 import 'screens/select_name/select_name.dart';
 import 'screens/select_world/select_world.dart';
 import 'screens/select_guild/select_guild.dart';
+import 'screens/view_character/view_character.dart';
 import 'screens/view_characters/view_characters.dart';
 
 class Routes {
@@ -23,6 +24,7 @@ class Routes {
   static final selectName = '/selectName';
   static final editStats = '/editStats';
   static final finishCharacter = '/finishCharacter';
+  static final viewCharacter = '/viewCharacter';
 }
 
 class Keys {
@@ -72,6 +74,7 @@ class _IcrpgCompanionAppState extends State<IcrpgCompanionApp> {
           Routes.selectName: (context) => SelectName(),
           Routes.editStats: (context) => EditStats(),
           Routes.finishCharacter: (context) => FinishCharacter(),
+          Routes.viewCharacter: (context) => ViewCharacter()
         },
         debugShowCheckedModeBanner: true,
       ),
