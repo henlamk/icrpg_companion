@@ -1,38 +1,38 @@
 import 'package:equatable/equatable.dart';
+import 'package:icrpg_companion/models/character.dart';
 
-import 'timer_model.dart';
 import 'user_model.dart';
 
 class AppState extends Equatable {
   final User user;
-  final TimerModel timer;
+  final Character character;
 
-  AppState({this.user, this.timer});
+  AppState({this.user, this.character});
 
   AppState.fromJson(Map<String, dynamic> json)
       : user = json['user'],
-        timer = json['timer'];
+        character = json['timer'];
 
-  factory AppState.initial() => AppState(user: User(), timer: TimerModel());
+  factory AppState.initial() => AppState(user: User(), character: Character());
 
   Map<String, dynamic> toJson() => {
         'user': user.toJson(),
-        'timer': timer.toJson(),
+        'character': character.toJson(),
       };
 
   @override
-  String toString() => "$user $timer";
+  String toString() => "$user $character";
 
   @override
-  List<Object> get props => [user, timer];
+  List<Object> get props => [user, character];
 
   AppState copyWith({
     User user,
-    TimerModel timer,
+    Character character,
   }) {
     return AppState(
       user: user ?? this.user,
-      timer: timer ?? this.timer,
+      character: character ?? this.character,
     );
   }
 }

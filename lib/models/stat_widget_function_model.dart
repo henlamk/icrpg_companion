@@ -1,0 +1,3 @@
+class StatWidgetFunctionModel {
+  Function unselect;
+}
