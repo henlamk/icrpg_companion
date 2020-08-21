@@ -26,9 +26,7 @@ class Stat {
     if (map == null) return null;
 
     return Stat(
-        statType: _findStatTypeByString(map['statType']),
-        defaultValue: map['defaultValue'],
-        currentValue: map['currentValue']);
+        defaultValue: map['defaultValue'], currentValue: map['currentValue']);
   }
 
   Map<String, dynamic> toJson() {
@@ -37,35 +35,5 @@ class Stat {
       'currentValue': this.currentValue,
       'statType': getStringValue(this.statType),
     };
-  }
-
-  static StatTypes _findStatTypeByString(String value) {
-    switch (value) {
-      case 'HP':
-        return StatTypes.HP;
-      case 'ARM':
-        return StatTypes.ARM;
-      case 'STR':
-        return StatTypes.STR;
-      case 'DEX':
-        return StatTypes.DEX;
-      case 'CON':
-        return StatTypes.CON;
-      case 'INT':
-        return StatTypes.INT;
-      case 'WIS':
-        return StatTypes.WIS;
-      case 'CHA':
-        return StatTypes.CHA;
-      case 'BSC':
-        return StatTypes.BSC;
-      case 'WPN':
-        return StatTypes.WPN;
-      case 'MGC':
-        return StatTypes.MGC;
-      case 'ULT':
-        return StatTypes.ULT;
-    }
-    return null;
   }
 }

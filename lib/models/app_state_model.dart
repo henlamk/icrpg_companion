@@ -15,10 +15,10 @@ class AppState extends Equatable {
 
   factory AppState.initial() => AppState(user: User(), character: Character());
 
-  Map<String, dynamic> toJson() => {
-        'user': user.toJson(),
-        'character': character.toJson(),
-      };
+  // Map<String, dynamic> toJson() => {
+  //       'user': user.toJson(),
+  //       'character': character.toJson(),
+  //     };
 
   @override
   String toString() => "$user $character";

@@ -1,3 +1,5 @@
+import 'package:json_annotation/json_annotation.dart';
+
 String getStringValue<T>(T enumEntry) => enumEntry.toString().split('.')[1];
 
 enum ItemActionTypes {
