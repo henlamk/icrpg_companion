@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icrpg_companion/screens/widgets/call_to_action.dart';
 import 'package:icrpg_companion/util/ui_helpers.dart';
 
 class ViewStaticData extends StatelessWidget {
@@ -34,6 +35,20 @@ class ViewStaticData extends StatelessWidget {
             ],
           ),
         ),
+        Positioned(
+            bottom: 32,
+            left: 32,
+            child: Column(
+              children: [
+                CallToAction(
+                  text: 'Save',
+                ),
+                verticalSpaceMedium,
+                CallToAction(
+                  text: 'Leave',
+                )
+              ],
+            ))
       ],
     );
   }

@@ -3,6 +3,8 @@ import 'package:icrpg_companion/app.dart';
 import 'package:icrpg_companion/models/app_state_model.dart';
 import 'package:icrpg_companion/models/character.dart';
 import 'package:icrpg_companion/redux/actions/character_actions.dart';
+import 'package:icrpg_companion/screens/widgets/expansion_panel_list.dart';
+import 'package:icrpg_companion/util/ui_helpers.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux_dev_tools/redux_dev_tools.dart';
@@ -31,13 +33,13 @@ class _ViewCharactersState extends State<ViewCharacters> {
               body: SafeArea(
                 child: Padding(
                   padding: EdgeInsets.all(8),
-                  child: Center(
-                    child: RaisedButton(
-                      onPressed: () => Keys.navKey.currentState
-                          .pushNamed(Routes.viewCharacter),
-                      child: Text('ViewCharacter'),
+                  child: Column(children: [
+                    CustomExpansionPanelList(
+                      onSelected: () => Keys.navKey.currentState
+                          .pushReplacementNamed(Routes.viewCharacter),
+                      items: [],
                     ),
-                  ),
+                  ]),
                 ),
               ),
             ));
