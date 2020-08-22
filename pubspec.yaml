@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -30,12 +30,17 @@ dependencies:
   flutter_redux_dev_tools: ^0.4.0
   redux_dev_tools: ^0.5.2
 
+  #firebase
+  firebase_auth: null
+  cloud_firestore: null
+
   cupertino_icons: ^0.1.3
   equatable: ^1.2.3
   http: ^0.12.2
   google_fonts: ^1.1.0
   json_annotation: ^3.0.1
   auto_size_text: ^2.1.0
+  rename: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -48,13 +53,66 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/images/guild_icons/Archer-48x48.png
+    - assets/images/guild_icons/Blade-48x48.png
+    - assets/images/guild_icons/Blip-48x48.png
+    - assets/images/guild_icons/Commander-48x48.png
+    - assets/images/guild_icons/Fragment-48x48.png
+    - assets/images/guild_icons/Ghost-48x48.png
+    - assets/images/guild_icons/Guardian-48x48.png
+    - assets/images/guild_icons/Gunner-48x48.png
+    - assets/images/guild_icons/Mage-48x48.png
+    - assets/images/guild_icons/Outsider-48x48.png
+    - assets/images/guild_icons/Priest-48x48.png
+    - assets/images/guild_icons/Ronin-48x48.png
+    - assets/images/guild_icons/Scout-48x48.png
+    - assets/images/guild_icons/Shadow-48x48.png
+    - assets/images/guild_icons/Tank-48x48.png
+    - assets/images/guild_icons/Titan-48x48.png
+    - assets/images/guild_icons/Wildling-48x48.png
+    - assets/images/guild_icons/Zurin-48x48.png
+    - assets/images/guild_icons/Archer-64x64.png
+    - assets/images/guild_icons/Blade-64x64.png
+    - assets/images/guild_icons/Blip-64x64.png
+    - assets/images/guild_icons/Commander-64x64.png
+    - assets/images/guild_icons/Fragment-64x64.png
+    - assets/images/guild_icons/Ghost-64x64.png
+    - assets/images/guild_icons/Guardian-64x64.png
+    - assets/images/guild_icons/Gunner-64x64.png
+    - assets/images/guild_icons/Mage-64x64.png
+    - assets/images/guild_icons/Outsider-64x64.png
+    - assets/images/guild_icons/Priest-64x64.png
+    - assets/images/guild_icons/Ronin-64x64.png
+    - assets/images/guild_icons/Scout-64x64.png
+    - assets/images/guild_icons/Shadow-64x64.png
+    - assets/images/guild_icons/Tank-64x64.png
+    - assets/images/guild_icons/Titan-64x64.png
+    - assets/images/guild_icons/Wildling-64x64.png
+    - assets/images/guild_icons/Zurin-64x64.png
+    - assets/images/guild_icons/Archer-96x96.png
+    - assets/images/guild_icons/Blade-96x96.png
+    - assets/images/guild_icons/Blip-96x96.png
+    - assets/images/guild_icons/Commander-96x96.png
+    - assets/images/guild_icons/Fragment-96x96.png
+    - assets/images/guild_icons/Ghost-96x96.png
+    - assets/images/guild_icons/Guardian-96x96.png
+    - assets/images/guild_icons/Gunner-96x96.png
+    - assets/images/guild_icons/Mage-96x96.png
+    - assets/images/guild_icons/Outsider-96x96.png
+    - assets/images/guild_icons/Priest-96x96.png
+    - assets/images/guild_icons/Ronin-96x96.png
+    - assets/images/guild_icons/Scout-96x96.png
+    - assets/images/guild_icons/Shadow-96x96.png
+    - assets/images/guild_icons/Tank-96x96.png
+    - assets/images/guild_icons/Titan-96x96.png
+    - assets/images/guild_icons/Wildling-96x96.png
+    - assets/images/guild_icons/Zurin-96x96.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -80,4 +138,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-

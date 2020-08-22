@@ -9,6 +9,8 @@ import 'package:redux/redux.dart';
 import 'models/app_state_model.dart';
 import 'screens/add_item/add_item.dart';
 import 'screens/edit_stats/edit_stats.dart';
+import 'screens/login/login.dart';
+import 'screens/register/register.dart';
 import 'screens/select_folk/select_folk.dart';
 import 'screens/select_name/select_name.dart';
 import 'screens/select_world/select_world.dart';
@@ -27,6 +29,8 @@ class Routes {
   static final finishCharacter = '/finishCharacter';
   static final viewCharacter = '/viewCharacter';
   static final addItem = '/addItem';
+  static final login = '/login';
+  static final register = '/register';
 }
 
 class Keys {
@@ -61,10 +65,7 @@ class _IcrpgCompanionAppState extends State<IcrpgCompanionApp> {
           onInit: (store) {
             // store.dispatch(loadUserData());
           },
-          builder: (BuildContext context, Store<dynamic> store) =>
-              ViewCharacters(
-            store: store,
-          ),
+          builder: (BuildContext context, Store<dynamic> store) => Login(),
         ),
         navigatorKey: Keys.navKey,
         routes: {
@@ -77,7 +78,9 @@ class _IcrpgCompanionAppState extends State<IcrpgCompanionApp> {
           Routes.editStats: (context) => EditStats(),
           Routes.finishCharacter: (context) => FinishCharacter(),
           Routes.viewCharacter: (context) => ViewCharacter(),
-          Routes.addItem: (context) => AddItem()
+          Routes.addItem: (context) => AddItem(),
+          Routes.login: (context) => Login(),
+          Routes.register: (context) => Register(),
         },
         debugShowCheckedModeBanner: true,
       ),

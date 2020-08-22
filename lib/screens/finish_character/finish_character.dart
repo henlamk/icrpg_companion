@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icrpg_companion/app.dart';
 import 'package:icrpg_companion/models/app_state_model.dart';
+import 'package:icrpg_companion/redux/actions/character_actions.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -19,8 +20,10 @@ class _FinishCharacterState extends State<FinishCharacter> {
         builder: (BuildContext context, _ViewModel model) => Scaffold(
               floatingActionButton: FloatingActionButton(
                 child: Icon(Icons.check),
-                onPressed: () =>
-                    Keys.navKey.currentState.pushNamed(Routes.viewCharacters),
+                onPressed: () {
+                  model.onCharacterFinished();
+                  Keys.navKey.currentState.pushNamed(Routes.viewCharacters);
+                },
               ),
               body: SafeArea(
                   child: Padding(
@@ -31,17 +34,15 @@ class _FinishCharacterState extends State<FinishCharacter> {
 }
 
 class _ViewModel {
-  final Function() onNavigateToSelectGuild;
+  final Function() onCharacterFinished;
 
   _ViewModel({
-    @required this.onNavigateToSelectGuild,
+    @required this.onCharacterFinished,
   });
 
   factory _ViewModel.create(Store<AppState> store) {
     return _ViewModel(
-        // onStart: () => store.dispatch(
-        //     TimerStartedAction(timer: TimerModel(start: DateTime.now()))),
-
-        );
+        onCharacterFinished: () => store
+            .dispatch(CharacterFinishAction(character: store.state.character)));
   }
 }

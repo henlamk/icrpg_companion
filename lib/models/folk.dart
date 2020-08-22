@@ -24,6 +24,13 @@ class Folk {
     this.description,
     bonus,
   });
+
+  toJson() => {
+        "name": name,
+        "bonusText": bonusText,
+        "world": world.toJson(),
+        "description": description
+      };
 }
 
 List<Folk> folks = [

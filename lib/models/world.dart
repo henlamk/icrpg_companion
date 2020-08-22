@@ -6,6 +6,8 @@ class World {
   final Color backgroundColor;
 
   World({this.backgroundColor, this.name, this.assetName});
+
+  toJson() => {"name": name, "assetName": assetName};
 }
 
 List<World> worlds = [

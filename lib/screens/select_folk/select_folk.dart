@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:icrpg_companion/app.dart';
 import 'package:icrpg_companion/models/app_state_model.dart';
 import 'package:icrpg_companion/models/folk.dart';
+import 'package:icrpg_companion/redux/actions/character_actions.dart';
 import 'package:icrpg_companion/util/ui_helpers.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -14,6 +15,7 @@ class SelectFolk extends StatefulWidget {
 }
 
 class _SelectFolkState extends State<SelectFolk> {
+  PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
@@ -21,13 +23,16 @@ class _SelectFolkState extends State<SelectFolk> {
         builder: (BuildContext context, _ViewModel model) => Scaffold(
               floatingActionButton: FloatingActionButton(
                 child: Icon(Icons.check),
-                onPressed: () =>
-                    Keys.navKey.currentState.pushNamed(Routes.selectName),
+                onPressed: () {
+                  model.onFolkSelected(folks[_pageController.page.toInt()]);
+                  Keys.navKey.currentState.pushNamed(Routes.selectName);
+                },
               ),
               body: SafeArea(
                   child: Padding(
                 padding: EdgeInsets.all(8),
                 child: PageView(
+                  controller: _pageController,
                   children: folks
                       .map(
                         (f) => Container(
@@ -70,17 +75,15 @@ class _SelectFolkState extends State<SelectFolk> {
 }
 
 class _ViewModel {
-  final Function() onNavigateToSelectGuild;
+  final Function(Folk) onFolkSelected;
 
   _ViewModel({
-    @required this.onNavigateToSelectGuild,
+    @required this.onFolkSelected,
   });
 
   factory _ViewModel.create(Store<AppState> store) {
     return _ViewModel(
-        // onStart: () => store.dispatch(
-        //     TimerStartedAction(timer: TimerModel(start: DateTime.now()))),
-
-        );
+        onFolkSelected: (folk) => store.dispatch(CharacterFolkSelectedAction(
+            character: store.state.character.copyWith(folk: folk))));
   }
 }

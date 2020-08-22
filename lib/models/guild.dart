@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class Guild {
@@ -19,6 +21,17 @@ class Guild {
     this.description,
     this.assetName,
   });
+
+  toJson() {
+    return {
+      "name": name,
+      "line": line,
+      "description": description,
+      "starterReward": starterReward,
+      "mileStones": json.encode(mileStones),
+      "assetName": assetName,
+    };
+  }
 }
 
 List<Guild> guilds = [

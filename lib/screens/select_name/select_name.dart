@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icrpg_companion/app.dart';
 import 'package:icrpg_companion/models/app_state_model.dart';
+import 'package:icrpg_companion/redux/actions/character_actions.dart';
 import 'package:icrpg_companion/util/ui_helpers.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -13,6 +14,8 @@ class SelectName extends StatefulWidget {
 }
 
 class _SelectNameState extends State<SelectName> {
+  TextEditingController _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
@@ -20,8 +23,10 @@ class _SelectNameState extends State<SelectName> {
         builder: (BuildContext context, _ViewModel model) => Scaffold(
               floatingActionButton: FloatingActionButton(
                 child: Icon(Icons.check),
-                onPressed: () =>
-                    Keys.navKey.currentState.pushNamed(Routes.editStats),
+                onPressed: () {
+                  model.onNameSelected(_textController.text);
+                  Keys.navKey.currentState.pushNamed(Routes.editStats);
+                },
               ),
               body: SafeArea(
                   child: Padding(
@@ -36,6 +41,7 @@ class _SelectNameState extends State<SelectName> {
                             child: Container(
                               padding: EdgeInsets.all(8),
                               child: TextFormField(
+                                controller: _textController,
                                 decoration: InputDecoration(
                                     hintText: 'Name', border: InputBorder.none),
                               ),
@@ -52,14 +58,16 @@ class _SelectNameState extends State<SelectName> {
 }
 
 class _ViewModel {
-  final Function() onNavigateToSelectGuild;
+  final Function(String) onNameSelected;
 
   _ViewModel({
-    @required this.onNavigateToSelectGuild,
+    @required this.onNameSelected,
   });
 
   factory _ViewModel.create(Store<AppState> store) {
     return _ViewModel(
+        onNameSelected: (name) => store.dispatch(CharacterNameSelectedAction(
+            character: store.state.character.copyWith(name: name)))
         // onStart: () => store.dispatch(
         //     TimerStartedAction(timer: TimerModel(start: DateTime.now()))),
 

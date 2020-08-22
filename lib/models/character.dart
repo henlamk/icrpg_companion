@@ -65,4 +65,23 @@ class Character {
     this.folk,
     this.coin,
   });
+
+  Character copyWith({name, documentId, guild, world, folk, coin}) {
+    return Character(
+        name: name ?? this.name,
+        documentId: documentId ?? this.documentId,
+        guild: guild ?? this.guild,
+        world: world ?? this.world,
+        folk: folk ?? this.folk,
+        coin: coin ?? this.coin);
+  }
+
+  toJson() => {
+        "name": name,
+        "documentId": documentId,
+        "guild": guild.toJson(),
+        "world": world.toJson(),
+        "folk": folk.toJson(),
+        "coin": coin.toString()
+      };
 }

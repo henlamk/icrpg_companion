@@ -23,13 +23,16 @@ class _ViewCharactersState extends State<ViewCharacters> {
   Widget build(BuildContext context) {
     return StoreConnector(
         converter: (Store<AppState> store) => _ViewModel.create(store),
+        onInit: (store) {},
         builder: (BuildContext context, _ViewModel model) => Scaffold(
               backgroundColor: Colors.white,
               floatingActionButton: FloatingActionButton(
                   backgroundColor: Theme.of(context).primaryColor,
                   child: Icon(Icons.add),
-                  onPressed: () =>
-                      Keys.navKey.currentState.pushNamed(Routes.selectWorld)),
+                  onPressed: () {
+                    model.onCreateNewCharacter();
+                    Keys.navKey.currentState.pushNamed(Routes.selectWorld);
+                  }),
               body: SafeArea(
                 child: Padding(
                   padding: EdgeInsets.all(8),
@@ -47,15 +50,15 @@ class _ViewCharactersState extends State<ViewCharacters> {
 }
 
 class _ViewModel {
-  final Function() onNavigateToSelectWorld;
+  final Function() onCreateNewCharacter;
 
   _ViewModel({
-    @required this.onNavigateToSelectWorld,
+    @required this.onCreateNewCharacter,
   });
 
   factory _ViewModel.create(Store<AppState> store) {
     return _ViewModel(
-        onNavigateToSelectWorld: () =>
+        onCreateNewCharacter: () =>
             store.dispatch(CharacterCreatedAction(character: Character()))
         // onStart: () => store.dispatch(
         //     TimerStartedAction(timer: TimerModel(start: DateTime.now()))),

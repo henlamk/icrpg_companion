@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:icrpg_companion/app.dart';
 import 'package:icrpg_companion/models/app_state_model.dart';
+import 'package:icrpg_companion/models/stat.dart';
+import 'package:icrpg_companion/redux/actions/character_actions.dart';
 import 'package:icrpg_companion/screens/view_character/_page_views/_widgets/stat_widget.dart';
 import 'package:icrpg_companion/util/enums.dart';
 import 'package:icrpg_companion/util/ui_helpers.dart';
@@ -22,8 +24,9 @@ class _EditStatsState extends State<EditStats> {
         builder: (BuildContext context, _ViewModel model) => Scaffold(
               floatingActionButton: FloatingActionButton(
                 child: Icon(Icons.check),
-                onPressed: () =>
-                    Keys.navKey.currentState.pushNamed(Routes.finishCharacter),
+                onPressed: () {
+                  Keys.navKey.currentState.pushNamed(Routes.finishCharacter);
+                },
               ),
               body: SafeArea(
                   child: Padding(
@@ -141,17 +144,17 @@ class _EditStatsState extends State<EditStats> {
 }
 
 class _ViewModel {
-  final Function() onNavigateToSelectGuild;
+  final Function(Stat) onStatsChanged;
 
   _ViewModel({
-    @required this.onNavigateToSelectGuild,
+    @required this.onStatsChanged,
   });
 
   factory _ViewModel.create(Store<AppState> store) {
-    return _ViewModel(
-        // onStart: () => store.dispatch(
-        //     TimerStartedAction(timer: TimerModel(start: DateTime.now()))),
-
-        );
+    return _ViewModel(onStatsChanged: (stat) {
+      throw Exception('StatAction not implemented');
+      // store.dispatch(CharacterStatsChangedAction(
+      //     character: store.state.character.copyWith()));
+    });
   }
 }
