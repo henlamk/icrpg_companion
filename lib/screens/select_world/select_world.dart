@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icrpg_companion/app.dart';
 import 'package:icrpg_companion/models/app_state_model.dart';
+import 'package:icrpg_companion/models/world.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_dev_tools/redux_dev_tools.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -27,8 +28,31 @@ class _SelectWorldState extends State<SelectWorld> {
               ),
               body: SafeArea(
                   child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Center(child: Text(widget.toString())))),
+                padding: EdgeInsets.all(8),
+                child: PageView(
+                  children: worlds
+                      .map(
+                        (world) => Container(
+                          color: world.backgroundColor,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text(
+                                    world.name,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              )),
             ));
   }
 }
