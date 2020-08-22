@@ -7,6 +7,7 @@ import 'package:icrpg_companion/screens/finish_character/finish_character.dart';
 import 'package:icrpg_companion/util/colors.dart';
 import 'package:redux/redux.dart';
 import 'models/app_state_model.dart';
+import 'screens/add_item/add_item.dart';
 import 'screens/edit_stats/edit_stats.dart';
 import 'screens/select_folk/select_folk.dart';
 import 'screens/select_name/select_name.dart';
@@ -25,6 +26,7 @@ class Routes {
   static final editStats = '/editStats';
   static final finishCharacter = '/finishCharacter';
   static final viewCharacter = '/viewCharacter';
+  static final addItem = '/addItem';
 }
 
 class Keys {
@@ -74,7 +76,8 @@ class _IcrpgCompanionAppState extends State<IcrpgCompanionApp> {
           Routes.selectName: (context) => SelectName(),
           Routes.editStats: (context) => EditStats(),
           Routes.finishCharacter: (context) => FinishCharacter(),
-          Routes.viewCharacter: (context) => ViewCharacter()
+          Routes.viewCharacter: (context) => ViewCharacter(),
+          Routes.addItem: (context) => AddItem()
         },
         debugShowCheckedModeBanner: true,
       ),

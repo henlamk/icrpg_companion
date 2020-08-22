@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:icrpg_companion/app.dart';
 import 'package:icrpg_companion/screens/view_character/_page_views/_widgets/expansion_panel_list_item.dart';
 
 class ViewItems extends StatefulWidget {
@@ -17,6 +18,7 @@ class _ViewItemsState extends State<ViewItems> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         ExpansionPanelList(
           expansionCallback: (int index, bool isExpanded) {
@@ -40,6 +42,17 @@ class _ViewItemsState extends State<ViewItems> {
                 ),
               )
               .toList(),
+        ),
+        InkWell(
+          onTap: () => Keys.navKey.currentState.pushNamed(Routes.addItem),
+          child: Container(
+            height: 50,
+            child: Center(child: Text('+')),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              shape: BoxShape.circle,
+            ),
+          ),
         )
       ],
     );
